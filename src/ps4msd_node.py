@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 #title           :ps4msd.py
 #description     :Python Script to read PS4 Joystick with serial communication protocol
@@ -39,7 +39,7 @@ def read_serial(serial_port, baudrate, speed, turn):
 
     while not rospy.is_shutdown():
         # read serial line and decode it into variables
-        line_joystick=joystick.readline().split(",")
+        line_joystick=joystick.readline().decode('utf-8').split(",")
         parsed = [x.rstrip() for x in line_joystick]
         
         try:
@@ -57,15 +57,15 @@ def pub_joystate():
 
     #Left Analog Hat
     joystate.left_analog_y = 15 - int(("0x"+parsed[3]),16)%16
-    joystate.left_analog_x = (int(("0x"+parsed[3]),16)-int(("0x"+parsed[3]),16)%16)/16
+    joystate.left_analog_x = int((int(("0x"+parsed[3]),16)-int(("0x"+parsed[3]),16)%16)/16)
     
     #Right Analog Hat
     joystate.right_analog_y = 15 - int(("0x"+parsed[4]),16)%16
-    joystate.right_analog_x = (int(("0x"+parsed[4]),16)-int(("0x"+parsed[4]),16)%16)/16
+    joystate.right_analog_x = int((int(("0x"+parsed[4]),16)-int(("0x"+parsed[4]),16)%16)/16)
 
     #Analog Button
     joystate.r2_analog = int(("0x"+parsed[5]),16)%16
-    joystate.l2_analog = (int(("0x"+parsed[5]),16)-int(("0x"+parsed[5]),16)%16)/16
+    joystate.l2_analog = int((int(("0x"+parsed[5]),16)-int(("0x"+parsed[5]),16)%16)/16)
 
     #Press Button
     #Binary value which indicates [R3, R1, Square, Cross, Circle, Triangle] consecutively
