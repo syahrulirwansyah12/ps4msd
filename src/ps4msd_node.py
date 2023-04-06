@@ -45,11 +45,8 @@ def read_serial(serial_port, baudrate, speed, turn):
         try:
             pub_joystate()
             pub_twist(speed, turn)
-<<<<<<< HEAD
-            speed, turn = set_vel(speed, turn, max_speed, max_turn)
-=======
+
             [speed, turn] = set_vel(speed, turn, max_speed, max_turn)
->>>>>>> 84b01099d2c327eb33cdd69295f60b3c978f6f48
 
         except BaseException as e:
             print(e)
@@ -96,16 +93,11 @@ def pub_twist(speed,turn):
     global joystate, twist
     twist_pub = rospy.Publisher("/joystick/cmd_vel",Twist,queue_size=10)
 
-<<<<<<< HEAD
     linear = float(joystate.right_analog_y/15.0)*2.0*speed - speed
     angular = float((15-joystate.right_analog_x)/15.0)*2.0*turn - turn
 
     twist.linear.x = linear
     twist.angular.z = angular
-=======
-    twist.linear.x = joystate.right_analog_y/15*speed
-    twist.angular.z = joystate.right_analog_x/15*turn
->>>>>>> 84b01099d2c327eb33cdd69295f60b3c978f6f48
 
     twist_pub.publish(twist)
 
@@ -113,7 +105,6 @@ def set_vel(speed,turn,max_speed,max_turn):
     global joystate
     if (joystate.button_r1 == 1):
         if (joystate.button_up == 1):
-<<<<<<< HEAD
             speed = speed + 0.01
         elif (joystate.button_down == 1):
             speed = speed - 0.01
@@ -121,15 +112,6 @@ def set_vel(speed,turn,max_speed,max_turn):
             turn = turn + 0.01
         elif (joystate.button_left == 1):
             turn = turn - 0.01
-=======
-            speed = speed + 0.05
-        elif (joystate.button_down == 1):
-            speed = speed - 0.05
-        elif (joystate.button_right == 1):
-            turn = turn + 0.05
-        elif (joystate.button_left == 1):
-            turn = turn - 0.05
->>>>>>> 84b01099d2c327eb33cdd69295f60b3c978f6f48
         else:
             pass
     else:
@@ -138,11 +120,7 @@ def set_vel(speed,turn,max_speed,max_turn):
     speed = min(max(speed, 0), max_speed)
     turn = min(max(turn, 0), max_turn)
 
-<<<<<<< HEAD
     return speed, turn
-
-=======
->>>>>>> 84b01099d2c327eb33cdd69295f60b3c978f6f48
 
 if __name__ == "__main__":
     try:
@@ -157,9 +135,5 @@ if __name__ == "__main__":
         read_serial(serial_port,baudrate,max_speed,max_turn)
         rate.sleep()
 
-<<<<<<< HEAD
     except rospy.ROSInterruptException:
-=======
-    except rospy.ROSInterruptionException:
->>>>>>> 84b01099d2c327eb33cdd69295f60b3c978f6f48
         pass
