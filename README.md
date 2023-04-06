@@ -40,7 +40,7 @@ then add:
 ```bash
 ACTION=="add", KERNEL=="/dev/ttyACM0", MODE="0666"
 ```
-to the file you have been made.\
+to the file you have been made.
 
 4. After setting up the serial port you can run the node by running roscore then rosrun:
 ```bash
