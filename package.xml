@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ps4msd</name>
+  <version>0.0.0</version>
+<<<<<<< HEAD
+  <description>The ps4msd package</description>
+  <maintainer email="syahrul@todo.todo">syahrul</maintainer>
+  <author email="jane.doe@example.com">Jane Doe</author>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <export>
+
+=======
+  <description>The PS4MSD package</description>
+  <maintainer email="ubuntu@todo.todo">ubuntu</maintainer>
+  <license>TODO</license>
+
+  <!-- <url type="website">http://wiki.ros.org/PS4MSD</url> -->
+  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>rospy</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <build_export_depend>rospy</build_export_depend>
+
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <export>
+    <message_generation></message_generation>
+>>>>>>> 84b01099d2c327eb33cdd69295f60b3c978f6f48
+  </export>
+</package>
